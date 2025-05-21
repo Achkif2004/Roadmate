@@ -613,17 +613,18 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   </div>
 </div>
     <!-- LOGIN HERINNERING POPUP -->
-    <div id="login-reminder-popup" style="display:none; position: fixed; left:0; top:0; right:0; bottom:0; background: rgba(44, 62, 80, 0.3); z-index: 11000; justify-content: center; align-items: center;">
-      <div style="background: #f2f6fa; border-radius: 28px; padding: 28px 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); max-width: 360px; text-align: center;">
-        <h2 style="margin-top:0; font-size: 1.3rem; color:#2c3e50;">Melding</h2>
-        <p style="font-size: 1rem; color:#34495e; margin: 1rem 0;">Om een herinnering te ontvangen, moet u inloggen of een account aanmaken.</p>
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
-          <a href="login.php" class="account-btn">Login</a>
-          <button onclick="window.location.href='index.php'" class="account-btn" style="background-color: #ccc; color: #2c3e50;cursor: pointer;">Annuleren</button>
-
+     <?php if (!Auth::isLoggedIn()): ?>
+      <div id="login-reminder-popup" style="display:none; position: fixed; left:0; top:0; right:0; bottom:0; background: rgba(44, 62, 80, 0.3); z-index: 11000; justify-content: center; align-items: center;">
+          <div style="background: #f2f6fa; border-radius: 28px; padding: 28px 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); max-width: 360px; text-align: center;">
+            <h2 style="margin-top:0; font-size: 1.3rem; color:#2c3e50;">Melding</h2>
+            <p style="font-size: 1rem; color:#34495e; margin: 1rem 0;">Om een herinnering en/of een overzicht van uw reslutaten te ontvangen, moet u inloggen of een account aanmaken.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+              <a href="login.php" class="account-btn">Login</a>
+              <button onclick="window.location.href='index.php'" class="account-btn" style="background-color: #ccc; color: #2c3e50;cursor: pointer;">Annuleren</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      <?php endif; ?>
 
 <script src="https://unpkg.com/proj4@2.8.0/dist/proj4.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -713,7 +714,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
   // Toon melding wanneer op "Een andere keer" wordt geklikt
   quizLaterBtn.addEventListener('click', () => {
-    document.getElementById('login-reminder-popup').style.display = 'flex';
+    <?php if (!Auth::isLoggedIn()): ?>
+      document.getElementById('login-reminder-popup').style.display = 'flex';
+    <?php else: ?>
+      window.location.href = 'index.php';
+    <?php endif; ?>
   });
 
 
@@ -795,10 +800,34 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     quizScoreEl.textContent = quizScore + "/" + quizQuestions.length;
   }
   quizScoreNext.onclick = function() {
+    // ✅ Resultaat opslaan in database
+    fetch('save_resultaat.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'score=' + encodeURIComponent(quizScore) + '&totaal=' + encodeURIComponent(quizQuestions.length)
+    })
+    .then(res => res.text())
+    .then(data => console.log("Score opgeslagen:", data))
+    .catch(err => console.error("Fout bij opslaan:", err));
+
     quizScoreSection.style.display = 'none';
     quizMailSection.style.display = '';
   };
-  quizMailYes.onclick = quizMailNo.onclick = function() {
+  quizMailYes.onclick = function() {
+    <?php if (!Auth::isLoggedIn()): ?>
+      // alert("Log eerst in om het resultaat via e-mail te ontvangen.");
+      document.getElementById('login-reminder-popup').style.display = 'flex';
+    <?php else: ?>
+      alert("Het resultaat zal via e-mail verzonden worden."); // hier kan je nog AJAX toevoegen indien je het echt wil mailen
+      quizPopup.style.display = 'none';
+      quizIntro.style.display = '';
+      quizMain.style.display = 'none';
+      quizScoreSection.style.display = 'none';
+      quizMailSection.style.display = 'none';
+    <?php endif; ?>
+  };
+
+  quizMailNo.onclick = function() {
     quizPopup.style.display = 'none';
     quizIntro.style.display = '';
     quizMain.style.display = 'none';
@@ -1025,6 +1054,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     tooltip.className = 'tooltip-box';
     tooltip.innerText = 'Stel hier in om de hoeveel minuten je een verkeersweetje wil horen.';
     intervalInfo.appendChild(tooltip);
+
+    
 </script>
 </body>
 </html>
