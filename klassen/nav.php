@@ -2,9 +2,9 @@
 require_once __DIR__ . '/../klassen/Auth.php';
 use Klassen\Auth;
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
+// if (session_status() !== PHP_SESSION_ACTIVE) {
+//     session_start();
+// }
 ?>
 <style>
   .main-header {
