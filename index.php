@@ -172,10 +172,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     .slider-container {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 0.4rem;
       font-size: 0.9rem;
       color: #34495e;
-      padding: 8px 6px;
+      padding: 4px 6px;
       border-radius: 8px;
       background: rgb(255, 255, 255);
     }
@@ -330,12 +330,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       background: #e2ba10;
     }
 
-    
+
     /* QUIZ LOGIC extra */
     .quiz-question {
       font-size: 1.22rem; margin-bottom: 22px; text-align:center; }
     .quiz-answers { display: flex; flex-direction: column; gap: 14px; width:100%; margin-bottom:14px;}
     .quiz-btn.wide {width:100%;}
+    .quiz-btn.sm {font-size:1rem; padding:9px 0;}
     .quiz-btn.sm {  font-size: 1rem;padding: 12px 18px;white-space: normal;text-align: center;line-height: 1.3;word-wrap: break-word;}
     .quiz-feedback { color:#c0392b;font-size:1.03rem;margin-bottom:5px;text-align:center;height:22px;}
     #quiz-next-btn, #quiz-score-next-btn {margin-top:18px;}
@@ -366,44 +367,39 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 
+    
     @media (max-width: 800px) {
       #quiz-popup {
-        min-width: 0;
-        padding: 16px 16px;
-        max-width: 90vw;
-        border-radius: 20px;
+      min-width: 0;
+      padding: 16px 16px;
+      max-width: 90vw;
+      border-radius: 20px;
       }
-
       .quiz-img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 12px;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 12px;
       }
-
       .quiz-title {
-        font-size: 1rem;
-        margin-bottom: 20px;
-        margin-top: 4px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      margin-top: 4px;
       }
-
       .quiz-question {
-        font-size: 1rem;
-        margin-bottom: 18px;
+      font-size: 1rem;
+      margin-bottom: 18px;
       }
-
       .quiz-btn {
-        font-size: 0.95rem;
-        padding: 10px 20px;
-        width: 100%;
-        max-width: 90vw;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      width: 100%;
+      max-width: 90vw;
       }
-
       .quiz-score-img img,
       #quiz-mail-section img {
         width: 80px;
         max-width: 60vw;
       }
-
       .quiz-score {
         font-size: 2rem;
       }
@@ -412,9 +408,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         font-size: 1rem;
         margin-bottom: 10px;
       }
-
       .quiz-btn.sm {
         font-size: 0.85rem;
+        padding: 8px 0;
         padding: 8px 5px;
       }
 
@@ -425,19 +421,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         border-radius: 16px;
         font-size: 1rem;
         padding: 10px 14px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         transition: all 0.2s ease-in-out;
         white-space: normal;
         text-align: center;
         line-height: 1.3;
         font-weight: 500;
       }
-
       .quiz-answer-btn:hover {
         background: #eef3f7;
         border-color: #999;
       }
-
       .quiz-answer-btn.selected {
         background: #dff0d8 !important;
         border-color: #27ae60 !important;
@@ -447,29 +441,26 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       .quiz-btn.wide {
         max-width: 90vw;
       }
-
       .quiz-btn.secondary {
         width: 90vw;
       }
-
       .quiz-answers {
-        gap: 10px;
+      gap: 10px;
       }
-
       .quiz-feedback {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      }
+      #quiz-mail-section .quiz-score-title {
+      font-size: 1rem;
+      line-height: 1.3;
+      margin: 12px 0;
       }
 
-      #quiz-mail-section .quiz-score-title {
-        font-size: 1rem;
-        line-height: 1.3;
-        margin: 12px 0;
-      }
 
       /* ✅ HEADER: logo + knop naast elkaar op mobiel */
       header {
-        flex-direction: row;
+        flex-direction: row;        
         justify-content: space-between;
       }
 
@@ -484,66 +475,45 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         font-size: 0.7rem;
       }
 
-      /* ✅ BUTTON-GROUP compacter op mobiel */
+
+
       .button-group {
-        flex-direction: row;
-        gap: 0.4rem;
-        bottom: 8px;
-      }
-
-      .button-group button {
-        padding: 4px;
-        border-radius: 8px;
-      }
-
-      .button-group button img {
-        height: 32px;
-        width: auto;
-      }
-
-      #btn-start-speech {
-        margin-right: 70px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 0.6rem;
       }
 
 
-      /* ✅ SLIDER compacter en verticaal gecentreerd op mobiel */
       .slider-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 6px; /* HOGERE padding voor extra lengte */
-        gap: 15px;
-        font-size: 0.9rem;
-        max-width: 260px;
-        background: rgb(255, 255, 255);
-        border-radius: 8px;
-        margin-left: -70px;
-        
+      flex-direction: row;
+      align-items: center;
+      padding: 8px 12px;
+      gap: 0.6rem;
+      border-radius: 12px;
+      font-size: 1rem;
       }
 
-      /* .slider-container label,
-      .slider-container input[type="range"],
-      #slider-value,
-      #interval-info {
-        text-align: center; 
-        display: block;
-      } */
+      .slider-container label {
+        font-size: 0.85rem;
+        font-size: 1rem;
+      }
+
+      .slider-container label,
+        #slider-value {
+          font-size: 1rem;
+          font-weight: 600;
+        }
 
       .slider-container input[type="range"] {
-        width: 100%;
-        max-width: 280px;
-        height: 20px;
-      }
-
-      #slider-value {
-        font-size: 0.85rem;
-        font-weight: 500;
-      }
-
-      #interval-info {
-        font-size: 1.4rem;
-        margin-top: 4px;
+        
+        width: 100px;
+        height: 28px;
       }
 
       /* ✅ Start-knop groter en beter klikbaar */
@@ -597,6 +567,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       }
 
       .info-icon {
+        font-size: 14px;
         font-size: 1.4rem;
       }
 
@@ -613,10 +584,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         text-align: center;
         box-sizing: border-box;
       }
+
+
+
     }
-
-
-
 
 
 
@@ -652,13 +623,15 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
   </div>
   <button id="start-route-btn">Route starten</button>
-  
+
   <div class="button-group">
     <button id="btn-start-speech">
+      <!-- <img src="images/play-button.png" alt="Start RoadMate" style="height: 24px;" /> -->
       <img src="images/play-button.png?v=2" alt="Start RoadMate" style="height: 48px;" />
     </button>
 
     <div class="slider-container">
+      <!-- <label for="interval-slider">Interval (min):</label> -->
       <label for="interval-slider">Frequentie in minuten:</label>
       <input type="range" id="interval-slider" min="1" max="20" step="1" value="1" />
       <span id="slider-value">1</span>
@@ -666,10 +639,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
 
     <button id="btn-stop-speech">
+      <!-- <img src="images/stop.png" alt="Stop RoadMate" style="height: 24px;" /> -->
       <img src="images/stop.png" alt="Stop RoadMate" style="height: 48px;" />
     </button>
 
-    
+
   </div>
 </main>
 
@@ -808,7 +782,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   });
 
   // Quiz: start of "een andere keer"
-  
+
   quizStartBtn.addEventListener('click', () => {
     quizIntro.style.display = 'none';
     quizMain.style.display = '';
@@ -848,6 +822,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     if(q.type === 'binary' || q.type === 'multi') {
       q.answers.forEach((ans, i) => {
         const btn = document.createElement('button');
+        btn.className = 'quiz-btn wide';
         btn.className = 'quiz-answer-btn';
         btn.textContent = ans;
         btn.onclick = () => answerQuizQuestion(i, btn);
@@ -860,6 +835,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       grid.style.gap = '10px';
       q.answers.forEach((ans, i) => {
         const btn = document.createElement('button');
+        btn.className = 'quiz-btn sm';
         btn.className = 'quiz-answer-btn';
         btn.textContent = ans;
         btn.onclick = () => answerQuizQuestion(i, btn);
@@ -1173,7 +1149,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     tooltip.innerText = 'Stel hier in om de hoeveel minuten je een verkeersweetje wil horen.';
     intervalInfo.appendChild(tooltip);
 
-    
+
 </script>
 </body>
-</html>
