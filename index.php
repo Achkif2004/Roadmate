@@ -425,7 +425,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         border-radius: 16px;
         font-size: 1rem;
         padding: 10px 14px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         transition: all 0.2s ease-in-out;
         white-space: normal;
         text-align: center;
@@ -469,7 +469,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
       /* ✅ HEADER: logo + knop naast elkaar op mobiel */
       header {
-        flex-direction: row;        
+        flex-direction: row;
         justify-content: space-between;
       }
 
@@ -501,29 +501,42 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         width: auto;
       }
 
-      /* ✅ SLIDER compacter en gecentreerd */
+      /* ✅ SLIDER compacter en verticaal gecentreerd op mobiel */
       .slider-container {
+        display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 6px;
-        gap: 4px;
+        justify-content: center;
+        padding: 20px;
+        gap: 8px;
         font-size: 0.9rem;
-        max-width: 220px;
+        max-width: 260px;
+        background: rgb(255, 255, 255);
+        border-radius: 8px;
       }
 
-      .slider-container label {
-        font-size: 0.9rem;
+      .slider-container label,
+      .slider-container input[type="range"],
+      #slider-value,
+      #interval-info {
+        text-align: center;
+        display: block;
       }
 
       .slider-container input[type="range"] {
         width: 100%;
-        max-width: 180px;
+        max-width: 280px;
         height: 20px;
       }
 
       #slider-value {
         font-size: 0.85rem;
         font-weight: 500;
+      }
+
+      #interval-info {
+        font-size: 1.4rem;
+        margin-top: 4px;
       }
 
       /* ✅ Start-knop groter en beter klikbaar */
@@ -594,6 +607,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         box-sizing: border-box;
       }
     }
+
+
 
 
 
