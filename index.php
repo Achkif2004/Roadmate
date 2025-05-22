@@ -344,6 +344,28 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     .quiz-score-img {text-align:center;}
 
 
+    #toast-message {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 24px;
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.5s ease, bottom 0.5s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    #toast-message.show {
+      opacity: 1;
+      bottom: 100px;
+    }
+
+
+
     @media (max-width: 600px) {
       #quiz-popup {
       min-width: 0;
@@ -626,6 +648,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         </div>
       <?php endif; ?>
 
+      <div id="toast-message">RoadMate is gestart</div>
+
+
 <script src="https://unpkg.com/proj4@2.8.0/dist/proj4.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
@@ -859,7 +884,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       speakRandomSign,
       slider.value * 60000
     );
+    showToast("RoadMate is gestart");
   });
+
 
   function speakRandomSign() {
     if (!nearbySignCodes.length) return;
@@ -946,7 +973,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     followRoute = true;
     map.setView(currentPos, 19);
     startBtn.classList.remove('show');
+    showToast("RoadMate is gestart");
+
   });
+
+  function showToast(message) {
+    const toast = document.getElementById('toast-message');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+
 
   navigator.geolocation.watchPosition(pos => {
     const { latitude:lat, longitude:lng, accuracy:acc, speed } = pos.coords;
