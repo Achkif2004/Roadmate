@@ -74,7 +74,7 @@
     }
 
     img {
-      width: 500px;
+      width: 700px;
       margin-top: 20px;
       opacity: 0;
       animation: fadeInLogo 1s 1s forwards, bounce 3s infinite ease-in-out;
@@ -190,7 +190,7 @@
   </div>
 
   <h1>Welkom bij </h1>
-  <img src="images/road mate logo.png" alt="RoadMate Logo" />
+  <img src="images/Logo RoadMate.png" alt="RoadMate Logo" />
   <h3>klik op het scherm om verder te gaan</h3>
 
   <script>
