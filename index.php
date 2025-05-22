@@ -512,7 +512,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
       .slider-container input[type="range"] {
         
-        width: 80px;
+        width: 70px;
         height: 28px;
       }
 
