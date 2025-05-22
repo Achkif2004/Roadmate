@@ -507,8 +507,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        padding: 20px;
-        gap: 8px;
+        padding: 0px 0px; /* HOGERE padding voor extra lengte */
+        gap: 10px;
         font-size: 0.9rem;
         max-width: 260px;
         background: rgb(255, 255, 255);
