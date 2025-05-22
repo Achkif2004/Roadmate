@@ -172,10 +172,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     .slider-container {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 15px;
       font-size: 0.9rem;
       color: #34495e;
-      padding: 4px 6px;
+      padding: 8px 6px;
       border-radius: 8px;
       background: rgb(255, 255, 255);
     }
@@ -501,27 +501,34 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         width: auto;
       }
 
+      #btn-start-speech {
+        margin-right: 70px;
+      }
+
+
       /* ✅ SLIDER compacter en verticaal gecentreerd op mobiel */
       .slider-container {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        padding: 0px 0px; /* HOGERE padding voor extra lengte */
-        gap: 10px;
+        padding: 8px 6px; /* HOGERE padding voor extra lengte */
+        gap: 15px;
         font-size: 0.9rem;
         max-width: 260px;
         background: rgb(255, 255, 255);
         border-radius: 8px;
+        margin-left: -70px;
+        
       }
 
-      .slider-container label,
+      /* .slider-container label,
       .slider-container input[type="range"],
       #slider-value,
       #interval-info {
-        text-align: center;
+        text-align: center; 
         display: block;
-      }
+      } */
 
       .slider-container input[type="range"] {
         width: 100%;
