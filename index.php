@@ -536,6 +536,16 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         width: 180px;
       }
 
+      #toast-message {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+        bottom: 70px;
+        max-width: 90vw;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+
 
     }
 
