@@ -17,7 +17,7 @@ use Klassen\Auth;
   }
 
   .logo img {
-    width: 200px;
+    width: 150px;
     height: auto;
   }
 
@@ -62,7 +62,7 @@ use Klassen\Auth;
 <header class="main-header">
   <div class="logo">
     <a href="index.php">
-      <img src="images/road mate logo.png" alt="RoadMate Logo">
+      <img src="images/road mate logo.png?v=2" alt="Roadmate logo">
     </a>
   </div>
 

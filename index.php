@@ -336,7 +336,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       font-size: 1.22rem; margin-bottom: 22px; text-align:center; }
     .quiz-answers { display: flex; flex-direction: column; gap: 14px; width:100%; margin-bottom:14px;}
     .quiz-btn.wide {width:100%;}
-    .quiz-btn.sm {font-size:1rem; padding:9px 0;}
+    .quiz-btn.sm {  font-size: 1rem;padding: 12px 18px;white-space: normal;text-align: center;line-height: 1.3;word-wrap: break-word;}
     .quiz-feedback { color:#c0392b;font-size:1.03rem;margin-bottom:5px;text-align:center;height:22px;}
     #quiz-next-btn, #quiz-score-next-btn {margin-top:18px;}
     .quiz-score-title {margin: 0 0 8px 0;font-size:1.2rem;text-align:center;}
@@ -366,7 +366,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
       #quiz-popup {
       min-width: 0;
       padding: 16px 16px;
@@ -408,8 +408,33 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       }
       .quiz-btn.sm {
         font-size: 0.85rem;
-        padding: 8px 0;
+        padding: 8px 5px;
       }
+
+      .quiz-answer-btn {
+        background: #f7f9fb;
+        color: #222;
+        border: 2px solid #ccc;
+        border-radius: 16px;
+        font-size: 1rem;
+        padding: 10px 14px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: all 0.2s ease-in-out;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
+        font-weight: 500;
+      }
+      .quiz-answer-btn:hover {
+        background: #eef3f7;
+        border-color: #999;
+      }
+      .quiz-answer-btn.selected {
+        background: #dff0d8 !important;
+        border-color: #27ae60 !important;
+        color: #2c3e50 !important;
+      }
+
       .quiz-btn.wide {
         max-width: 90vw;
       }
@@ -465,16 +490,25 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       .slider-container {
       flex-direction: row;
       align-items: center;
-      padding: 4px 6px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      gap: 0.6rem;
+      border-radius: 12px;
+      font-size: 1rem;
       }
 
       .slider-container label {
-        font-size: 0.85rem;
+        font-size: 1rem;
       }
 
+      .slider-container label,
+        #slider-value {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
       .slider-container input[type="range"] {
-        width: 80px;
+        width: 140px;
+        height: 28px;
       }
 
       /* ✅ Start-knop groter en beter klikbaar */
@@ -528,7 +562,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       }
 
       .info-icon {
-        font-size: 14px;
+        font-size: 1.4rem;
       }
 
       .tooltip-box {
@@ -586,18 +620,18 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   
   <div class="button-group">
     <button id="btn-start-speech">
-      <img src="images/play-button.png" alt="Start RoadMate" style="height: 24px;" />
+      <img src="images/play-button.png?v=2" alt="Start RoadMate" style="height: 48px;" />
     </button>
 
     <div class="slider-container">
-      <label for="interval-slider">Interval (min):</label>
+      <label for="interval-slider">Frequentie in minuten:</label>
       <input type="range" id="interval-slider" min="1" max="20" step="1" value="1" />
       <span id="slider-value">1</span>
       <div class="info-icon" id="interval-info">❓</div>
     </div>
 
     <button id="btn-stop-speech">
-      <img src="images/stop.png" alt="Stop RoadMate" style="height: 24px;" />
+      <img src="images/stop.png" alt="Stop RoadMate" style="height: 48px;" />
     </button>
 
     
@@ -779,7 +813,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     if(q.type === 'binary' || q.type === 'multi') {
       q.answers.forEach((ans, i) => {
         const btn = document.createElement('button');
-        btn.className = 'quiz-btn wide';
+        btn.className = 'quiz-answer-btn';
         btn.textContent = ans;
         btn.onclick = () => answerQuizQuestion(i, btn);
         quizAEl.appendChild(btn);
@@ -791,7 +825,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       grid.style.gap = '10px';
       q.answers.forEach((ans, i) => {
         const btn = document.createElement('button');
-        btn.className = 'quiz-btn sm';
+        btn.className = 'quiz-answer-btn';
         btn.textContent = ans;
         btn.onclick = () => answerQuizQuestion(i, btn);
         grid.appendChild(btn);

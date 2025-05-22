@@ -189,7 +189,7 @@
     </svg>
   </div>
 
-  <h1>Welcome to</h1>
+  <h1>Welkom bij </h1>
   <img src="images/road mate logo.png" alt="RoadMate Logo" />
   <h3>klik op het scherm om verder te gaan</h3>
 

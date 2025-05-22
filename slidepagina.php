@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RoadMate Slides</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmate slides</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <link rel="stylesheet" href="site.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+    <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -34,12 +38,12 @@
         margin-left: 1rem;
     }
 
-    nav a {
+    /* nav a {
       color: white;
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: 500;
-    }
+    } */
 
     .slider-container {
       max-width: 600px;
@@ -78,8 +82,8 @@
 
     .nav-buttons {
       position: relative;
-      margin-top: 3rem; /* iets meer naar beneden */
-      height: 50px;      /* zodat de container ruimte heeft */
+      margin-top: 3rem;
+      height: 50px;      
     }
 
     .nav-buttons img {
@@ -102,8 +106,12 @@
       display: flex;
       justify-content: center;
       gap: 10px;
+      margin-top: -40px; /* verplaats omhoog */
       margin-bottom: 1rem;
+      z-index: 1;
+      position: relative;
     }
+
 
     .dot {
       width: 12px;
@@ -170,21 +178,23 @@
         font-size: 0.95rem;
       }
 
-      .nav-buttons {
+      /* .nav-buttons {
         flex-direction: row;
         gap: 1rem;
         justify-content: center;
-      }
+      } */
 
-      .nav-buttons button {
+      /* .nav-buttons button {
         padding: 8px 16px;
         font-size: 0.95rem;
         max-width: 130px;
-      }
+      } */
 
       .indicators {
         gap: 8px;
-        margin-top: 1rem;
+        margin-top: -20px;
+        padding-bottom: 30px;
+        
       }
 
       .dot {
@@ -205,9 +215,12 @@
 
 
   </style>
+</head>
+<body>
+     <?php include 'klassen/nav.php'; ?>
 
-    <?php include 'klassen/nav.php'; ?>
-  <div class="slider-container">
+    
+    <div class="slider-container">
     <div class="slide active">
       <img src="images/verkeersborden.png" alt="Slide 1" />
       <h2>Leer verkeersborden onderweg</h2>
@@ -244,52 +257,52 @@
     
   </div>
 
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
-  let current = 0;
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    document.querySelectorAll('.dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
+    let current = 0;
 
-    prevBtn.style.display = index === 0 ? 'none' : 'inline-block';
-    nextBtn.style.display = index === slides.length - 1 ? 'none' : 'inline-block';
-  }
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
 
-  nextBtn.addEventListener('click', () => {
-    if (current < slides.length - 1) {
-      current++;
-      showSlide(current);
+      prevBtn.style.display = index === 0 ? 'none' : 'inline-block';
+      nextBtn.style.display = index === slides.length - 1 ? 'none' : 'inline-block';
     }
-  });
 
-  prevBtn.addEventListener('click', () => {
-    if (current > 0) {
-      current--;
-      showSlide(current);
-    }
-  });
+    nextBtn.addEventListener('click', () => {
+      if (current < slides.length - 1) {
+        current++;
+        showSlide(current);
+      }
+    });
 
-  // Swipe support (optioneel)
-  let startX = 0;
-  const slider = document.querySelector('.slider-container');
-  slider.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
-  slider.addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    if (endX < startX - 50) nextBtn.click();
-    if (endX > startX + 50) prevBtn.click();
-  });
+    prevBtn.addEventListener('click', () => {
+      if (current > 0) {
+        current--;
+        showSlide(current);
+      }
+    });
 
-  showSlide(current);
-</script>
+    // Swipe support (optioneel)
+    let startX = 0;
+    const slider = document.querySelector('.slider-container');
+    slider.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+    slider.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      if (endX < startX - 50) nextBtn.click();
+      if (endX > startX + 50) prevBtn.click();
+    });
 
+    showSlide(current);
+  </script>
 </body>
 </html>
