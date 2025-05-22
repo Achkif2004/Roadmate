@@ -368,44 +368,51 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
     @media (max-width: 800px) {
       #quiz-popup {
-      min-width: 0;
-      padding: 16px 16px;
-      max-width: 90vw;
-      border-radius: 20px;
+        min-width: 0;
+        padding: 16px 16px;
+        max-width: 90vw;
+        border-radius: 20px;
       }
+
       .quiz-img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 12px;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 12px;
       }
+
       .quiz-title {
-      font-size: 1rem;
-      margin-bottom: 20px;
-      margin-top: 4px;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        margin-top: 4px;
       }
+
       .quiz-question {
-      font-size: 1rem;
-      margin-bottom: 18px;
+        font-size: 1rem;
+        margin-bottom: 18px;
       }
+
       .quiz-btn {
-      font-size: 0.95rem;
-      padding: 10px 20px;
-      width: 100%;
-      max-width: 90vw;
+        font-size: 0.95rem;
+        padding: 10px 20px;
+        width: 100%;
+        max-width: 90vw;
       }
+
       .quiz-score-img img,
       #quiz-mail-section img {
         width: 80px;
         max-width: 60vw;
       }
+
       .quiz-score {
         font-size: 2rem;
       }
-      
+
       .quiz-score-title {
         font-size: 1rem;
         margin-bottom: 10px;
       }
+
       .quiz-btn.sm {
         font-size: 0.85rem;
         padding: 8px 5px;
@@ -425,10 +432,12 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         line-height: 1.3;
         font-weight: 500;
       }
+
       .quiz-answer-btn:hover {
         background: #eef3f7;
         border-color: #999;
       }
+
       .quiz-answer-btn.selected {
         background: #dff0d8 !important;
         border-color: #27ae60 !important;
@@ -438,22 +447,25 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
       .quiz-btn.wide {
         max-width: 90vw;
       }
+
       .quiz-btn.secondary {
         width: 90vw;
       }
+
       .quiz-answers {
-      gap: 10px;
+        gap: 10px;
       }
+
       .quiz-feedback {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
       }
+
       #quiz-mail-section .quiz-score-title {
-      font-size: 1rem;
-      line-height: 1.3;
-      margin: 12px 0;
+        font-size: 1rem;
+        line-height: 1.3;
+        margin: 12px 0;
       }
-      
 
       /* ✅ HEADER: logo + knop naast elkaar op mobiel */
       header {
@@ -472,43 +484,46 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         font-size: 0.7rem;
       }
 
-
-
+      /* ✅ BUTTON-GROUP compacter op mobiel */
       .button-group {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1001;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 0.6rem;
+        flex-direction: row;
+        gap: 0.4rem;
+        bottom: 8px;
       }
 
+      .button-group button {
+        padding: 4px;
+        border-radius: 8px;
+      }
 
+      .button-group button img {
+        height: 32px;
+        width: auto;
+      }
+
+      /* ✅ SLIDER compacter en gecentreerd */
       .slider-container {
-      flex-direction: row;
-      align-items: center;
-      padding: 8px 12px;
-      gap: 0.6rem;
-      border-radius: 12px;
-      font-size: 1rem;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px;
+        gap: 4px;
+        font-size: 0.9rem;
+        max-width: 220px;
       }
 
       .slider-container label {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
 
-      .slider-container label,
-        #slider-value {
-          font-size: 1rem;
-          font-weight: 600;
-        }
-
       .slider-container input[type="range"] {
-        width: 140px;
-        height: 28px;
+        width: 100%;
+        max-width: 180px;
+        height: 20px;
+      }
+
+      #slider-value {
+        font-size: 0.85rem;
+        font-weight: 500;
       }
 
       /* ✅ Start-knop groter en beter klikbaar */
@@ -578,10 +593,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         text-align: center;
         box-sizing: border-box;
       }
-
-
-
     }
+
 
 
 
